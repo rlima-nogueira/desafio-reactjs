@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+
+    .titulo {
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+    }
+
+    .buscar {
+
+        .inputBuscar{
+            width: 30rem;
+        }
+
+        .botaoBuscar {
+            background: #737373;
+            height: 3.4rem;
+        }
+    }
+}
