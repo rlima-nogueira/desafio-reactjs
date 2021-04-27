@@ -37,18 +37,17 @@ export default function Home() {
        setOpen(true);
         axios.get(`https://api.github.com/users/${usuario}/repos`)
         .then(response => {
-            console.log(response.data)
+            console.log(response.data);
             const repositories = response.data;
-            const repositoriesName =[];
-          //popula o array com o repositorios encontrados
+            const dadosUsuario=[];
             repositories.map((repository)=>{
-            // adiciona os repositorios ao array "repositoriesName"
-            return repositoriesName.push(repository.name);
-            history.push('/repositories');
+                return dadosUsuario.push(repository.owner);
             });
-            localStorage.setItem('repositoriesName', JSON.stringify(repositoriesName));
+            localStorage.setItem('repositories', JSON.stringify(repositories));
+            localStorage.setItem('owner', JSON.stringify(dadosUsuario));
+           
             setErro(false);
-            history.push('/repositories');
+            history.push('/perfil');
             setOpen(false);
         }).catch(err => {
           setErro(true);
