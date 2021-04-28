@@ -11,6 +11,8 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 import EmailIcon from '@material-ui/icons/Email';
 import LinkIcon from '@material-ui/icons/Link';
 import TwitterIcon from '@material-ui/icons/Twitter';
+import Paper from '@material-ui/core/Paper';
+import Tooltip from '@material-ui/core/Tooltip';
 
 export default function Perfil() {
     const history = useHistory();
@@ -70,27 +72,49 @@ export default function Perfil() {
                     <Box className={styles.dadosPerfil}>
                         <span>
                             <BusinessIcon/>
-                            {usuario.company ? usuario.company : 'organization'}
+                            {usuario.company ? usuario.company : ''}
                         </span>
                         <span>
                             <LocationOnIcon/>
-                            {usuario.location ? usuario.location : 'location'}
+                            {usuario.location ? usuario.location : ''}
                         </span>
                         <span>
                             <EmailIcon/>
-                            {usuario.email ? usuario.email : 'email'}
+                            {usuario.email ? usuario.email : ''}
                         </span>
                         <span className={styles.blog}>
                             <LinkIcon/>
-                            {usuario.blog ? usuario.blog : 'blog'}
+                            {usuario.blog ? usuario.blog : ''}
                         </span>
                         <span>
                             <TwitterIcon/>
-                            {usuario.twitter_username ? usuario.twitter_username : 'twitter'}
+                            {usuario.twitter_username ? usuario.twitter_username : ''}
                         </span>
                     </Box>
                </Box>
             </Box>
+            
+            <Box component="div" className={styles.repositorios}>
+                {gitRepositories.map((repository) => {
+                    return (
+                        <a target="_blank" href={repository.html_url}>
+                            <Tooltip title="Clique para ver na íntegra">
+
+                                <Paper key={repository.id} 
+                                elevation={3} className={styles.cartaoRepositorio}>
+                                    <span className={styles.tituloRepositorio}>  
+                                        {repository.name}
+                                    </span>
+                                    <span>
+                                        {repository.description}
+                                    </span>
+                                </Paper>
+                            </Tooltip>
+                        </a>
+                    )
+                })}
+            </Box>
+        
         </Box>
     );
 }
