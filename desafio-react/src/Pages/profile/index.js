@@ -20,20 +20,23 @@ export default function Perfil() {
     const [usuario, setUsuario] = useState(''); 
     
     useEffect(() => {
-        let profile = localStorage.getItem('usuario');
-        let repositories = localStorage.getItem('repositories')
-
-            if (profile !== null || repositories !== null) {
-                profile = JSON.parse(profile);
-                setUsuario(profile);    
-                
-                repositories = JSON.parse(repositories);
-                setGitRepositories(repositories);
-
-            } else {
-                history.push('/');
-            }
-    }, []);
+        function carregarDados() {
+            let profile = localStorage.getItem('usuario');
+            let repositories = localStorage.getItem('repositories')
+    
+                if (profile !== null || repositories !== null) {
+                    profile = JSON.parse(profile);
+                    setUsuario(profile);    
+                    
+                    repositories = JSON.parse(repositories);
+                    setGitRepositories(repositories);
+    
+                } else {
+                    history.push('/');
+                }
+        }
+        carregarDados();
+    }, [history]);
     
     
 
@@ -97,7 +100,7 @@ export default function Perfil() {
             <Box component="div" className={styles.repositorios}>
                 {gitRepositories.map((repository) => {
                     return (
-                        <a target="_blank" href={repository.html_url}>
+                        <a rel="noreferrer" target="_blank" href={repository.html_url}>
                             <Tooltip title="Clique para ver na íntegra">
 
                                 <Paper key={repository.id} 

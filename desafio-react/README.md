@@ -1,19 +1,33 @@
+### Tecnologias utilizadas ### 
+- ReactJs
+- Node 
+- Saas
+- React Router dom
+- Sass
+- Material-UI
+- Axios
+
+<span>Neste projeto foi usado tecnologias como Saas e Material-UI para agilzar o processo de desenvolvimento e o Axios pela sintaxe mais simples. <span>
+#### Para instalar o projeto ####
+- Clone o projeto e rode 
+
+``` npm i ```
+
+Versão do node utilizada no projeto: 14.16.0
+
+Caso falte alguma biblioteca, todas que foram utilizadas, estão listadas abaixo. 
+### Documentações ###
 https://reactrouter.com/web/guides/quick-start
-- react router dom para gerenciamento de rotas
-npm install react-router-dom
-
-
+- React router dom para gerenciamento de rotas
 
 https://material-ui.com/pt/getting-started/installation/
-npm install @material-ui/core - Material-UI para components
-npm install @material-ui/icon - Material-UI para icons svg
-
+- Material-UI biblioteca de componentes React UI 
 
 https://www.npmjs.com/package/sass
-npm install saas
+- Linguagem usada para definir o layout e a formatação de documento HTML
 
 https://www.npmjs.com/package/axios
-npm i axios
+- Cliente HTTP baseado em Promises para fazer requisições
 
-https://www.npmjs.com/package/@material-ui/lab - Pros alerta de erro
-npm i @material-ui/lab
+https://www.npmjs.com/package/@material-ui/lab
+- Utilizado no component ```<Alert></Alert>```
