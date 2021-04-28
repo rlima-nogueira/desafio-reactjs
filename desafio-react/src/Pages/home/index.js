@@ -37,22 +37,26 @@ export default function Home() {
        setOpen(true);
         axios.get(`https://api.github.com/users/${usuario}/repos`)
         .then(response => {
-            console.log(response.data);
             const repositories = response.data;
-            const dadosUsuario=[];
-            repositories.map((repository)=>{
-                return dadosUsuario.push(repository.owner);
-            });
             localStorage.setItem('repositories', JSON.stringify(repositories));
-            localStorage.setItem('owner', JSON.stringify(dadosUsuario));
-           
             setErro(false);
-            history.push('/perfil');
             setOpen(false);
+            history.push('/perfil');
         }).catch(err => {
           setErro(true);
           setOpen(false);
         });
+
+        axios.get(`https://api.github.com/users/${usuario}`).then((response) => {
+            const dadosUsuario = response.data;
+            localStorage.setItem('usuario', JSON.stringify(dadosUsuario));
+            setErro(false);
+            setOpen(false);
+            history.push('/perfil');
+        }).catch(err => {
+            setErro(true);
+            setOpen(false);
+        });;
       }
 
     return (
